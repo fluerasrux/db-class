@@ -1,0 +1,36 @@
+Table CUSTOMER {
+    
+  c_custkey int   [pk]
+  c_name varchar
+  c_address varchar
+  c_phone varchar
+  c_mktsegment varchar
+  c_comment varchar
+  c_acctbal decimal(12,2)
+  c_nationkey int [ref: > NATION.n_nationkey] 
+}
+
+Table ORDERS {
+  o_orderkey int [pk]
+  o_orderstatus varchar
+  o_totalprice decimal(12,2)
+  o_orderdate date
+  o_orderpriority varchar
+  o_clerk varchar
+  o_shippriority int
+  o_comment varchar
+  o_custkey int [ref: > CUSTOMER.c_custkey]   // FK: many players -> one team
+}
+
+Table NATION {
+  n_nationkey int [pk]
+  n_name varchar
+  n_comment varchar
+  n_regionkey int  [ref: > REGION.r_regionkey]
+}
+
+Table REGION {
+  r_regionkey int  [pk]
+  r_name varchar
+  r_comment varchar
+}
